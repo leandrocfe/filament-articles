@@ -251,8 +251,7 @@ class CreateCategory extends Component implements HasForms
 ```
 
 ### Conclusion
-Avoiding these common pitfalls will save you time and help ensure a smoother development experience with Filament.
-
-By understanding these patterns, you can build more reliable and maintainable forms in your projects. 
+Avoiding these common errors will save you time and provide a smoother development experience with Filament. 
+Additionally, it will deepen your understanding of Filament's features, enabling you to create more maintainable and reliable forms for your projects.
 
 Happy coding ;)
