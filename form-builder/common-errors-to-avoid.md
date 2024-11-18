@@ -2,7 +2,7 @@
 
 ## Introduction
 As a member of the Filament community, I frequently respond to questions and issues raised in [Filament Discord](https://filamentphp.com/discord) and [Filament GitHub discussions](https://github.com/filamentphp/filament/discussions). 
-Many of these involve common mistakes developers make while building forms in Filament. 
+Many of these involve common mistakes that developers make while building forms in Filament. 
 In this article, I'll highlight some of these errors and show you how to avoid them.
 
 ## Error 1: Using New Tailwind Classes Without Defining a Theme
@@ -31,7 +31,7 @@ If you run this code without creating a custom theme, the new class **text-blue-
 ![HelperText without css applied](images/img1.png)
 
 #### Why?
-Tailwind CSS only compiles classes explicitly referenced in scanned files. Classes dynamically added in your Blade files will be ignored unless you configure Tailwind to scan those files.
+Tailwind CSS compiles only classes explicitly referenced in scanned files. Classes dynamically added in your Blade files will be ignored unless you configure Tailwind to scan those files.
 
 #### Solution:
 - Create a [custom theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme).
@@ -81,7 +81,7 @@ However, if you edit a post with no tags, the defaults won't apply:
 #### Why?
 As the [docs say](https://filamentphp.com/docs/3.x/forms/fields/getting-started#setting-a-default-value), _defaults are only used when the form is loaded without existing data. Inside panel resources this only works on Create Pages, as Edit Pages will always fill the data from the model._
 
-In that case, the value is `null` and this is correct in the EditPage.
+In this case, the value is `null`, which is correct in the EditPage.
 
 If you want to force the default value in the EditPage if the value is `null`, you should use the `formatStateUsing()` method:
 
@@ -184,7 +184,7 @@ CreateAction::make()
     ]),
 ```
 
-This ensures proper functionality, displaying only the navigation buttons.
+This ensures proper functionality by displaying only the navigation buttons.
 
 ### Error 5: Forgetting Key Steps in Standalone Mode
 
@@ -221,7 +221,7 @@ class CreateCategory extends Component implements HasForms
 #### Solution:
 Ensure you are following these [key steps](https://filamentphp.com/docs/3.x/forms/adding-a-form-to-a-livewire-component#adding-the-form) when using **Standalone Mode**.
 
-If you omit `statePath()`, ensure [public properties](https://livewire.laravel.com/docs/properties) exist for each [Form Field](https://filamentphp.com/docs/3.x/forms/fields/getting-started):
+If you omit `statePath()`, ensure that [public properties](https://livewire.laravel.com/docs/properties) exist for each [Form Field](https://filamentphp.com/docs/3.x/forms/fields/getting-started):
 
 ```php
 class CreateCategory extends Component implements HasForms
