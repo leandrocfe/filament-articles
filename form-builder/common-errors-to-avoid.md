@@ -1,4 +1,4 @@
-# FormBuilder: Common Errors to Avoid
+# Form Builder: Common Errors to Avoid
 
 ## Introduction
 As a member of the Filament community, I frequently respond to questions and issues raised in [Filament Discord](https://filamentphp.com/discord) and [Filament GitHub discussions](https://github.com/filamentphp/filament/discussions). 
@@ -81,9 +81,9 @@ However, if you edit a post with no tags, the defaults won't apply:
 #### Why?
 As the [docs say](https://filamentphp.com/docs/3.x/forms/fields/getting-started#setting-a-default-value), _defaults are only used when the form is loaded without existing data. Inside panel resources this only works on Create Pages, as Edit Pages will always fill the data from the model._
 
-In this case, the value is `null`, which is correct in the EditPage.
+In this case, the value is `null`, which is correct on the Edit Page.
 
-If you want to force the default value in the EditPage if the value is `null`, you should use the `formatStateUsing()` method:
+If you want to force the input to have a default value on the Edit Page if the value is `null`, you should use the `formatStateUsing()` method:
 
 ```php
 TagsInput::make('tags')
@@ -94,7 +94,7 @@ TagsInput::make('tags')
     ] : $state),
 ```
 
-### Error 3: Combining options and relationship Methods in Select Components
+### Error 3: Combining `options()` and `relationship()` Methods in Select Components
 
 When using a [Select](https://filamentphp.com/docs/3.x/forms/fields/select) or [CheckboxList](https://filamentphp.com/docs/3.x/forms/fields/checkbox-list) component with a `relationship()`, avoid also defining `options()`. For instance:
 
@@ -109,7 +109,7 @@ Select::make('categories')
     ->options(Category::wherePublished(true)->pluck('name', 'id')), // Don't use this
 ```
 #### Why?
-The `relationship` method already fetches `options` from the database.
+The `relationship` method already fetches `options` from the database using relationship methods in your Eloquent models.
 
 #### Solution:
 Use the [modifyQueryUsing()](https://filamentphp.com/docs/3.x/forms/fields/select#customizing-the-relationship-query) method to customize the query:
@@ -135,7 +135,7 @@ The [Wizard](https://filamentphp.com/docs/3.x/forms/layout/wizard) component has
 #### Solution:
 Use the `HasWizard` trait in your Resource Pages:
 
-CreatePage:
+Create Page:
 ```php
 use App\Filament\Resources\CategoryResource;
 use Filament\Resources\Pages\CreateRecord;
@@ -155,7 +155,7 @@ class CreateCategory extends CreateRecord
 }
 ```
 
-EditPage:
+Edit Page:
 ```php
 use App\Filament\Resources\CategoryResource;
 use Filament\Resources\Pages\EditRecord;
